@@ -37,6 +37,7 @@ return [
     'layout.reset' => 'Reset',
     'layout.show-more' => 'show more',
     'layout.submit' => 'Submit',
+    'layout.tags.top' => 'Top Tags',
     'layout.title' => 'Title',
     'layout.total.posts' => 'Total {count} posts',
     'menu.blog' => 'Blog',
