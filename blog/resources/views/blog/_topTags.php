@@ -17,7 +17,11 @@ use Yiisoft\View\WebView;
 
 ?>
 <h4 class="text-muted mb-3">
-    Popular tags
+    <?php
+        echo Html::a(
+            $translator->translate('layout.tags.top')
+        );
+    ?>
 </h4>
 <ul class="list-group mb-3">
     <?php
