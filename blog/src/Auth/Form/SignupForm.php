@@ -6,14 +6,13 @@ namespace App\Auth\Form;
 
 use App\User\User;
 use App\User\UserRepository;
-use Yiisoft\Form\FormModel;
+use Yiisoft\FormModel\FormModel;
 use Yiisoft\Translator\TranslatorInterface;
 use Yiisoft\Validator\Result;
 use Yiisoft\Validator\Rule\Equal;
 use Yiisoft\Validator\Rule\Length;
 use Yiisoft\Validator\Rule\Required;
 use Yiisoft\Validator\RulesProviderInterface;
-use Yiisoft\Validator\ValidatorInterface;
 
 final class SignupForm extends FormModel implements RulesProviderInterface
 {
@@ -22,11 +21,9 @@ final class SignupForm extends FormModel implements RulesProviderInterface
     private string $passwordVerify = '';
 
     public function __construct(
-        private ValidatorInterface $validator,
-        private TranslatorInterface $translator,
-        private UserRepository $userRepository,
+        private readonly TranslatorInterface $translator,
+        private readonly UserRepository $userRepository,
     ) {
-        parent::__construct();
     }
 
     public function getAttributeLabels(): array
@@ -53,16 +50,11 @@ final class SignupForm extends FormModel implements RulesProviderInterface
         return $this->password;
     }
 
-    public function signup(): false|User
+    public function signup(): User
     {
-        if ($this->validator->validate($this)->isValid()) {
-            $user = new User($this->getLogin(), $this->getPassword());
-            $this->userRepository->save($user);
-
-            return $user;
-        }
-
-        return false;
+        $user = new User($this->getLogin(), $this->getPassword());
+        $this->userRepository->save($user);
+        return $user;
     }
 
     public function getRules(): array

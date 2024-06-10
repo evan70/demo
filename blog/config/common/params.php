@@ -16,7 +16,7 @@ use Yiisoft\Router\UrlGeneratorInterface;
 use Yiisoft\Translator\TranslatorInterface;
 use Yiisoft\Yii\Cycle\Schema\Conveyor\AttributedSchemaConveyor;
 use Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider;
-use Yiisoft\Yii\Cycle\Schema\Provider\PhpFileSchemaProvider;
+use Cycle\Schema\Provider\PhpFileSchemaProvider;
 use Yiisoft\Yii\View\CsrfViewInjection;
 
 return [
@@ -44,7 +44,7 @@ return [
     ],
 
     'yiisoft/form' => [
-        'configs' => [
+        'themes' => [
             'default' => [
                 'containerClass' => 'form-floating mb-3',
                 'inputClass' => 'form-control',
@@ -181,6 +181,7 @@ return [
     'yiisoft/yii-swagger' => [
         'annotation-paths' => [
             '@src/Controller',
+            '@src/Middleware',
             '@src/User/Controller',
         ],
     ],

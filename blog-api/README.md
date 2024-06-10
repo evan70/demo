@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px">
+        <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px" alt="Yii">
     </a>
     <h1 align="center">Yii Framework API Demo Project</h1>
     <br>
@@ -40,13 +40,13 @@ Change ownership of the app directory to web group:
 chown -R :www-data .
 ```
 
-Usually the application is available at http://localhost:8080.
+Usually the application is available at <http://localhost:8080>.
 
 Authorization is performed via the `X-Api-Key` header.
 
 ## API documentation
 
-API documentation is available at `/docs`. It is built from OpenAPI annotations (`@OA`).
+API documentation is available at `/docs`. It is built from OpenAPI attributes (`#[OA\ ... ]`).
 See [Swagger-PHP documentation](https://zircote.github.io/swagger-php/Getting-started.html#write-annotations) for details
 on how to annotate your code.
 
@@ -55,7 +55,6 @@ on how to annotate your code.
 ```php
 ./vendor/bin/codecept run
 ```
-
 
 ## Static analysis
 

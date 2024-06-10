@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Auth\Form;
 
 use App\Auth\AuthService;
-use Yiisoft\Form\FormModel;
+use Yiisoft\FormModel\FormModel;
 use Yiisoft\Translator\TranslatorInterface;
 use Yiisoft\Validator\Result;
 use Yiisoft\Validator\Rule\Callback;
@@ -18,9 +18,10 @@ final class LoginForm extends FormModel implements RulesProviderInterface
     private string $password = '';
     private bool $rememberMe = false;
 
-    public function __construct(private AuthService $authService, private TranslatorInterface $translator)
-    {
-        parent::__construct();
+    public function __construct(
+        private AuthService $authService,
+        private TranslatorInterface $translator,
+    ) {
     }
 
     public function getAttributeLabels(): array
@@ -54,9 +55,6 @@ final class LoginForm extends FormModel implements RulesProviderInterface
                     $result = new Result();
 
                     if (!$this->authService->login($this->login, $this->password)) {
-                        $this
-                            ->getFormErrors()
-                            ->addError('login', '');
                         $result->addError($this->translator->translate('validator.invalid.login.password'));
                     }
 
